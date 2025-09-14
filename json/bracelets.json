@@ -1,0 +1,8 @@
+{
+    "item1": {
+        "name": "ItemName",
+        "images" : ["Image1", "Image2"],
+        "description" : "ItemDescription",
+        "prize": "ItemPrize"
+    }
+}

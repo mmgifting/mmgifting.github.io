@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MM Gifting - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 20px; }
+        .cards { display: flex; flex-wrap: wrap; gap: 24px; }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+        .card h3 { margin: 16px 0 8px; }
+        .card p { color: #555; }
+        .card .price { font-weight: bold; margin: 8px 0; }
+        .card button {
+            background: #0078d7;
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: auto;
+        }
+        .card button:hover { background: #005fa3; }
+        #cart-count {
+            background: #e81123;
+            color: #fff;
+            border-radius: 50%;
+            padding: 2px 8px;
+            font-size: 0.9em;
+            vertical-align: middle;
+            margin-left: 6px;
+        }
+        header {
+            background: #0078d7;
+            color: #fff;
+            padding: 18px 0;
+            text-align: center;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cards" id="items-list">
+            <!-- Cards will be injected here -->
+        </div>
+    </div>
+    <script>
+        // Example items
+        const items = [
+            {
+                id: 1,
+                name: "Luxury Gift Box",
+                description: "A beautifully packaged box with assorted premium gifts.",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                id: 2,
+                name: "Personalized Mug",
+                description: "Custom mug with your name or message.",
+                price: 14.99,
+                image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                id: 3,
+                name: "Handmade Candle",
+                description: "Scented candle made from natural soy wax.",
+                price: 19.99,
+                image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                id: 1,
+                name: "Luxury Gift Box",
+                description: "A beautifully packaged box with assorted premium gifts.",
+                price: 49.99,
+                image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                id: 2,
+                name: "Personalized Mug",
+                description: "Custom mug with your name or message.",
+                price: 14.99,
+                image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80"
+            },
+            {
+                id: 3,
+                name: "Handmade Candle",
+                description: "Scented candle made from natural soy wax.",
+                price: 19.99,
+                image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+            }
+        ];
+
+        let cartCount = 0;
+
+        function renderCards() {
+            const list = document.getElementById('items-list');
+            list.innerHTML = '';
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>${item.description}</p>
+                    <div class="price">$${item.price.toFixed(2)}</div>
+                    <button onclick="addToCart(${item.id})">Add to Cart</button>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function addToCart(itemId) {
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
+            // You can expand this to store cart items in localStorage or a variable
+        }
+
+        // Expose addToCart to global scope
+        window.addToCart = addToCart;
+
+        renderCards();
+    </script>
+</body>
+</html>

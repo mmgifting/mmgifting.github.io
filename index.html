@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MM Gifting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Website</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="./css/index.css" rel="stylesheet">
 </head>
 <body>
-	<h1>Welcome to MM Gifting</h1>
-	<p>Your one-stop shop for memorable gifts.</p>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar" class="sidebar">
+    <div>
+      <button class="close-btn" onclick="toggleSidebar()">✕</button>
+      <div class="menu-title">Menu</div>
+
+      <!-- Top-down links -->
+      <div class="menu-links-top">
+        <a onclick="loadPage('pages/bracelets.html')">Bracelets</a>
+      </div>
+
+      <!-- Bottom-up links -->
+      <div class="menu-links-bottom">
+        <a onclick="loadPage('pages/services.html')">Services</a>
+        <a onclick="loadPage('pages/help.html')">Help</a>
+        <a onclick="loadPage('pages/contact.html')">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Open Button -->
+  <button id="openBtn" class="open-btn" onclick="toggleSidebar()">&#x276F;</button>
+
+  <!-- MAIN CONTENT -->
+  <div id="mainContent" class="main">
+
+    <!-- HEADER -->
+    <header>
+      <div class="branding">
+        <i class="fas fa-rocket"></i>
+        <h1>MyBrand</h1>
+      </div>
+	  <div class="cart-icon" onclick="loadPage('pages/cart.html')">
+		<i class="fas fa-shopping-cart"></i>
+		<span id="cart-count">0</span>
+	  </div>
+      <div class="header-social">
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </header>
+
+    <!-- IFRAME SECTION -->
+    <iframe id="contentFrame" src="pages/home.html" onload="resizeIframe(this)" scrolling="no"></iframe>
+  </div>
+  <script src="./js/index.js"></script>
 </body>
 </html>
